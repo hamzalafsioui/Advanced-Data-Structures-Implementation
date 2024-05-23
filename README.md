@@ -57,7 +57,7 @@ An implementation of IDictionary<TKey, TValue> using an array (KeyValuePair<TKey
 ## 5-ISet
 **MyCollectionSet<T>** is a custom implementation of the ISet<T> interface, providing a collection of unique elements with various set operations. This class is designed to mimic the behavior of a set, ensuring that all elements are unique and supporting typical set operations like union, intersection, and difference.
 
-###Features
+### Features
 * **Generic:** Can store elements of any type (T).
 * **Unique Elements:** Ensures that all elements in the collection are unique.
 * **Set Operations:** Supports union, intersection, difference, symmetric difference, and subset/superset checks.
