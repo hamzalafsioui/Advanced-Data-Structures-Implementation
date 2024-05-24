@@ -17,6 +17,19 @@ namespace General_Tree
         {
             Children.Add(child);
         }
+        public TreeNode<T> Find(T value)
+        {
+            if (EqualityComparer<T>.Default.Equals(value, this.Value))
+                return this;
+            foreach (var child in this.Children)
+            {
+                var Found = child.Find(value);
+                if (Found != null)
+                    return Found;
+            }
+            return null; // Not Found
+
+        }
 
     }
     public class Tree<T>
@@ -25,6 +38,14 @@ namespace General_Tree
         public Tree(T rootValue)
         {
             Root = new TreeNode<T>(rootValue);
+        }
+        public void PrintTree(string indent = " ")
+        {
+            Program.PrintTree(this.Root, indent);
+        }
+        public TreeNode<T> Find(T value)
+        {
+            return Root?.Find(value);
         }
     }
     internal class Program
@@ -49,6 +70,25 @@ namespace General_Tree
 
             // Printing the tree
             PrintTree(companyTree.Root);
+
+
+            // Check if Node Found
+            if (companyTree.Find("Developer") != null)
+            {
+                Console.WriteLine("\nDeveloper is Found -)");
+            }
+            else
+            {
+                Console.WriteLine("\nDeveloper is Not Found )-");
+            }
+            if (companyTree.Find("UI Designer") != null)
+            {
+                Console.WriteLine("\nUI Designer is Found -)");
+            }
+            else
+            {
+                Console.WriteLine("\nUI Designer is Not Found -(");
+            }
 
 
             Console.WriteLine("\n\n======== Family Tree Example: ========\n");
