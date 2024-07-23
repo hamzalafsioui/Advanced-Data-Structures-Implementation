@@ -90,6 +90,29 @@ namespace Preorder_Tree_Traversal_Implementation
 
 				PrintTree(root.Left, space); // Print Second Left
 			}
+
+			private void PreOrderTraversal(BinaryTreeNode<T> node)
+			{
+				/*
+                    PreOrder Traversal visits the current node before its child nodes. 
+                    The process for PreOrder Traversal is as follows:
+
+                 - Visit the current node.
+                 - Recursively perform PreOrder Traversal of the left subtree.
+                 - Recursively perform PreOrder Traversal of the right subtree.
+            */
+				if(node != null)
+				{
+                    Console.Write(node.Value + "  ");
+                    PreOrderTraversal(node.Left);
+					PreOrderTraversal(node.Right);
+				}
+			}
+
+			public void PreOrderTraversal()
+			{
+				PreOrderTraversal(Root);
+			}
 		}
 
 
@@ -107,6 +130,8 @@ namespace Preorder_Tree_Traversal_Implementation
 			BinaryTree.Insert(8);
 
 			BinaryTree.PrintTree();
+
+			BinaryTree.PreOrderTraversal();
 		}
 	}
 }
