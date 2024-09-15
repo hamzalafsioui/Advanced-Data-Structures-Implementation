@@ -82,6 +82,51 @@
 
 			}
 
+			/// <summary>
+			/// Retrieve or return all nodes at specific <paramref name="level"/>
+			/// </summary>
+			/// <param name="level"></param>
+			/// <returns>return all nodes at level</returns>
+			public List<T> GetNodesAtLevel(int level)
+			{
+				List<T> result = new List<T>();
+				if (Root == null || level < 0)
+					return result;
+
+				Queue<BinaryTreeNode<T>> nodeQueue = new Queue<BinaryTreeNode<T>>();
+				Queue<int> levelQueue = new Queue<int>();
+
+				nodeQueue.Enqueue(Root);
+				levelQueue.Enqueue(0);
+
+				while (nodeQueue.Count > 0)
+				{
+					var currentNode = nodeQueue.Dequeue();
+					var currentLevel = levelQueue.Dequeue();
+
+					if (currentLevel == level)
+					{
+						result.Add(currentNode.Value);
+					}
+
+					if (currentNode.Left != null)
+					{
+						// in this step We enqueue the left node with the same level
+						nodeQueue.Enqueue(currentNode.Left); 
+						levelQueue.Enqueue(currentLevel + 1);
+					}
+
+					if (currentNode.Right != null)
+					{
+						// in this step We enqueue the right node with the same level
+						nodeQueue.Enqueue(currentNode.Right);
+						levelQueue.Enqueue(currentLevel + 1);
+					}
+				}
+
+				return result;
+			}
+
 			public void PrintTree()
 			{
 				PrintTree(Root, 0);
@@ -123,6 +168,13 @@
 
 			Console.WriteLine("\nLevel Order Traversal: ");
 			binaryTree.LevelOrderTraversal();
+
+			Console.WriteLine("\nEnter the level you want to retrieve:");
+			int level = int.Parse(Console.ReadLine()!);
+
+			List<int> nodesAtLevel = binaryTree.GetNodesAtLevel(level);
+
+			Console.WriteLine($"Nodes at level {level}: {string.Join(", ", nodesAtLevel)}");
 
 		}
 	}
