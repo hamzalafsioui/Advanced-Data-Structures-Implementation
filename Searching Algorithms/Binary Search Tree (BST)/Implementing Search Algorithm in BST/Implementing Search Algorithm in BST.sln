@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Implementing Search Algorithm in BST", "Implementing Search Algorithm in BST\Implementing Search Algorithm in BST.csproj", "{2F717B4A-D578-4685-80B3-F89F53CBD6BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F717B4A-D578-4685-80B3-F89F53CBD6BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F717B4A-D578-4685-80B3-F89F53CBD6BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F717B4A-D578-4685-80B3-F89F53CBD6BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F717B4A-D578-4685-80B3-F89F53CBD6BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0CB64BE-805F-45B2-BD78-A954C8AB206C}
+	EndGlobalSection
+EndGlobal
