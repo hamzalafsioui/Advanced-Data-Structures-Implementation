@@ -65,6 +65,33 @@
 				return false;
 			}
 
+			public int GetLevelOfValue(T value)
+			{
+				int level = 0;
+				if (Root == null)
+					return -1;
+				Queue<BinarySearchTreeNode<T>> queue = new Queue<BinarySearchTreeNode<T>>();
+				queue.Enqueue(Root);
+				while (queue.Count > 0)
+				{
+					var currentNode = queue.Dequeue();
+					if (currentNode.Value.CompareTo(value) == 0)
+						return level;
+
+					else if (currentNode.Value.CompareTo(value) < 0 && currentNode.Right != null)
+					{
+						queue.Enqueue(currentNode.Right);
+						level++;
+					}
+					else if (currentNode.Value.CompareTo(value) > 0 && currentNode.Left != null)
+					{
+						queue.Enqueue(currentNode.Left);
+						level++;
+					}
+				}
+				return -1;
+			}
+
 
 			public void PrintTree()
 			{
@@ -93,20 +120,20 @@
 		{
 			Console.WriteLine("\nInserting : 45, 15, 79, 90, 10, 55, 12, 20, 50\r\n");
 
-			var bst = new BinarySearchTree<int>();
-			bst.Insert(45);
-			bst.Insert(15);
-			bst.Insert(79);
-			bst.Insert(90);
-			bst.Insert(10);
-			bst.Insert(55);
-			bst.Insert(12);
-			bst.Insert(20);
-			bst.Insert(50);
-			bst.PrintTree();
+			var BST = new BinarySearchTree<int>();
+			BST.Insert(45);
+			BST.Insert(15);
+			BST.Insert(79);
+			BST.Insert(90);
+			BST.Insert(10);
+			BST.Insert(55);
+			BST.Insert(12);
+			BST.Insert(20);
+			BST.Insert(50);
+			BST.PrintTree();
 
-			Console.WriteLine($"Is Value 90 Exist ? {bst.Search(90)}");
-			Console.WriteLine($"Is Value 34 Exist ? {bst.Search(34)}");
+			Console.WriteLine($"Is Value 90 Exist ? {BST.Search(90)} In Level {BST.GetLevelOfValue(90)}");
+			Console.WriteLine($"Is Value 34 Exist ? {BST.Search(34)} In Level {BST.GetLevelOfValue(34)}");
 		}
 	}
 }
