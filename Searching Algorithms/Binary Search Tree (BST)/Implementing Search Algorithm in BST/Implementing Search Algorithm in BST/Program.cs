@@ -45,6 +45,27 @@
 				return root;
 			}
 
+			public bool Search(T value)
+			{
+				return Search(Root, value);
+			}
+			public bool Search(BinarySearchTreeNode<T> root, T value)
+			{
+				if (root == null)
+					return false;
+				if (root.Value.CompareTo(value) == 0)
+					return true;
+
+				if (root.Value.CompareTo(value) < 0)
+					return Search(root.Right, value);
+
+				else if (root.Value.CompareTo(value) > 0)
+					return Search(root.Left, value);
+
+				return false;
+			}
+
+
 			public void PrintTree()
 			{
 				PrintTree(Root, 0);
@@ -83,6 +104,9 @@
 			bst.Insert(20);
 			bst.Insert(50);
 			bst.PrintTree();
+
+			Console.WriteLine($"Is Value 90 Exist ? {bst.Search(90)}");
+			Console.WriteLine($"Is Value 34 Exist ? {bst.Search(34)}");
 		}
 	}
 }
